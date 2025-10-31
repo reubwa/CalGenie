@@ -27,10 +27,15 @@ namespace CalGenie
         {
             InitializeComponent();
             LstEvents.ItemsSource = App.GlobalEventsList;
+            CalDate.Date = DateTimeOffset.Now;
         }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
+            if (TxtURL.Text == "")
+            {
+                TestButton1TeachingTip.IsOpen = true;
+            }
             string calendarURL = TxtURL.Text;
             TimeOnly time = new TimeOnly(DateTime.Now.Hour,DateTime.Now.Minute);
             DateOnly date = new DateOnly(CalDate.Date.Value.Year,CalDate.Date.Value.Month,CalDate.Date.Value.Day);

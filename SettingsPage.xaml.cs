@@ -27,6 +27,16 @@ namespace CalGenie
         public SettingsPage()
         {
             InitializeComponent();
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            if (localSettings.Values.ContainsKey("mostProductiveTimeStart"))
+            {
+                TmStart.SelectedTime = (TimeSpan)localSettings.Values["mostProductiveTimeStart"];
+            }
+
+            if (localSettings.Values.ContainsKey("mostProductiveTimeEnd"))
+            {
+                TmEnd.SelectedTime = (TimeSpan)localSettings.Values["mostProductiveTimeEnd"];
+            }
         }
 
         private void TmStart_OnSelectedTimeChanged(TimePicker sender, TimePickerSelectedValueChangedEventArgs args)

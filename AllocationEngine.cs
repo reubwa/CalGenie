@@ -101,9 +101,10 @@ namespace CalGenie
         OOLCONTROL:
             foreach (var slot in freetime)
             {
+            OUPCONTROL:
                 foreach (var calTask in Tasks)
                 {
-                    if (slot.Duration < calTask.Duration)
+                    if (slot.Duration >= calTask.Duration)
                     {
                         CalendarEvent calEvent = new CalendarEvent()
                         {
@@ -112,11 +113,11 @@ namespace CalGenie
                             EndTime = slot.StartTime + calTask.Duration
                         };
                         generated.Add(calEvent);
-                        slot.StartTime -= calTask.Duration;
+                        slot.StartTime += calTask.Duration;
                         Tasks.Remove(calTask);
-                        goto OLCONTROL;
+                        goto OUPCONTROL;
                     }
-                    if (slot.Duration > calTask.Duration) { goto OLCONTROL; }
+                    if (slot.Duration < calTask.Duration) { goto OLCONTROL; }
 
                     if (slot.Duration == calTask.Duration)
                     {
