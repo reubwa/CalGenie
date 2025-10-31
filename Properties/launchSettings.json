@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CalGenie (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CalGenie (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

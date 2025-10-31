@@ -1,0 +1,11 @@
+<Page
+    x:Class="CalGenie.MPTNotSet"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <!-- Content body -->
+        <TextBlock Text="You'll need to set your most productive time in order to continue" TextWrapping="Wrap" />
+    </StackPanel>
+
+</Page>
