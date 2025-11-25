@@ -98,7 +98,6 @@ namespace CalGenie
             DateTime mpts = new DateTime(mptd,mostProductiveTimeStart);
             DateTime mpte = new DateTime(mptd, mostProductiveTimeEnd);
             var freetime = GetFreeTimeSlots(Events, mpts, mpte);
-        OOLCONTROL:
             foreach (var slot in freetime)
             {
             OUPCONTROL:
@@ -117,7 +116,11 @@ namespace CalGenie
                         Tasks.Remove(calTask);
                         goto OUPCONTROL;
                     }
-                    if (slot.Duration < calTask.Duration) { goto OLCONTROL; }
+
+                    if (slot.Duration < calTask.Duration)
+                    {
+                        break;
+                    }
 
                     if (slot.Duration == calTask.Duration)
                     {
@@ -130,11 +133,9 @@ namespace CalGenie
                         generated.Add(calEvent);
                         Tasks.Remove(calTask);
                         freetime.Remove(slot);
-                        goto OOLCONTROL;
+                        break;
                     }
                 }
-            OLCONTROL:
-                continue;
             }
             return generated;
         }
